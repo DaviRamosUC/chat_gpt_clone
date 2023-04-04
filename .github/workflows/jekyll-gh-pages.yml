@@ -32,7 +32,9 @@ jobs:
           node-version: 18.12
       - name: Install
         run: |
-          cd /home/runner/work/chat_gpt_clone/chat_gpt_clone/
+          ls -la
+          cd ..
+          ls -la
           npm i
       - name: Create and populate apikey.js file
         env:
