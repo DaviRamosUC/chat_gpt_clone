@@ -26,9 +26,12 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: run npm dependences
-        run : npm install
-        shell: bash
+      - name: Setting up Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+          cache: 'npm'
+      - run: npm install
       - name: Create and populate apikey.js file
         env:
           OPENAI_SECRET_KEY: ${{ secrets.OPENAI_SECRET_KEY }}
@@ -36,6 +39,7 @@ jobs:
           touch apikey.js
           echo const OPENAI_SECRET_KEY = "$OPENAI_SECRET_KEY" >> apikey.js
           echo export default OPENAI_SECRET_KEY >> apikey.js
+          ls
           ls ${{ github.workspace }}
         shell: bash
       - name: Checkout
