@@ -32,11 +32,13 @@ jobs:
           node-version: 18.12
       - name: Install
         run: |
+          cd /home/runner/work/chat_gpt_clone/chat_gpt_clone/
           npm i
       - name: Create and populate apikey.js file
         env:
           OPENAI_SECRET_KEY: ${{ secrets.OPENAI_SECRET_KEY }}
         run: |
+          cd /home/runner/work/chat_gpt_clone/chat_gpt_clone/
           touch apikey.js
           echo const OPENAI_SECRET_KEY = "$OPENAI_SECRET_KEY" >> apikey.js
           echo export default OPENAI_SECRET_KEY >> apikey.js
